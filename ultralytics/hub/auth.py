@@ -1,8 +1,8 @@
 # Ultralytics YOLO 🚀, AGPL-3.0 license
 
 import requests
-from hub_sdk import HUB_API_ROOT, HUB_WEB_ROOT
-
+# from hub_sdk import HUB_API_ROOT, HUB_WEB_ROOT
+HUB_API_ROOT, HUB_WEB_ROOT = None, None
 from ultralytics.hub.utils import PREFIX, request_with_credentials
 from ultralytics.utils import LOGGER, SETTINGS, emojis, is_colab
 
@@ -90,17 +90,18 @@ class Auth:
         Returns:
             bool: True if authentication is successful, False otherwise.
         """
-        try:
-            if header := self.get_auth_header():
-                r = requests.post(f"{HUB_API_ROOT}/v1/auth", headers=header)
-                if not r.json().get("success", False):
-                    raise ConnectionError("Unable to authenticate.")
-                return True
-            raise ConnectionError("User has not authenticated locally.")
-        except ConnectionError:
-            self.id_token = self.api_key = False  # reset invalid
-            LOGGER.warning(f"{PREFIX}Invalid API key ⚠️")
-            return False
+        return False
+        # try:
+        #     if header := self.get_auth_header():
+        #         r = requests.post(f"{HUB_API_ROOT}/v1/auth", headers=header)
+        #         if not r.json().get("success", False):
+        #             raise ConnectionError("Unable to authenticate.")
+        #         return True
+        #     raise ConnectionError("User has not authenticated locally.")
+        # except ConnectionError:
+        #     self.id_token = self.api_key = False  # reset invalid
+        #     LOGGER.warning(f"{PREFIX}Invalid API key ⚠️")
+        #     return False
 
     def auth_with_cookies(self) -> bool:
         """

@@ -1,8 +1,8 @@
 # Ultralytics YOLO 🚀, AGPL-3.0 license
 
 import requests
-from hub_sdk import HUB_API_ROOT, HUB_WEB_ROOT, HUBClient
-
+# from hub_sdk import HUB_API_ROOT, HUB_WEB_ROOT, HUBClient
+HUB_API_ROOT, HUB_WEB_ROOT, HUBClient = None, None, None
 from ultralytics.data.utils import HUBDatasetStats
 from ultralytics.hub.auth import Auth
 from ultralytics.hub.utils import PREFIX

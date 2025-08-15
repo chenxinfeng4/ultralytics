@@ -3,7 +3,7 @@
 import json
 from time import time
 
-from hub_sdk.config import HUB_WEB_ROOT
+
 
 from ultralytics.hub.utils import PREFIX, events
 from ultralytics.utils import LOGGER, SETTINGS
@@ -43,6 +43,7 @@ def on_fit_epoch_end(trainer):
 
 def on_model_save(trainer):
     """Saves checkpoints to Ultralytics HUB with rate limiting."""
+    from hub_sdk.config import HUB_WEB_ROOT
     session = getattr(trainer, "hub_session", None)
     if session:
         # Upload checkpoints with rate limiting
